@@ -1,5 +1,5 @@
 # scala-existentials
-Scala Existentials Explained
+######Scala Existentials Explained
 
 Provides a full demo of Scala existential types
 
