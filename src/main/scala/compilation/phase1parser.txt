@@ -1,0 +1,86 @@
+[[syntax trees at end of                    parser]] // Main.scala
+package pkg {
+  object Main extends scala.AnyRef {
+    def <init>() = {
+      super.<init>();
+      ()
+    };
+    def foo1[T](x: Array[T]) = println(x.length);
+    def foo2(x: Array[T] forSome { 
+      type T
+    }) = println(x.length);
+    def foo3(x: Array[T] forSome { 
+      type T >: Nothing <: Any
+    }) = println(x.length);
+    def foo4(x: Array[_$1] forSome { 
+      <synthetic> type _$1
+    }) = println(x.length);
+    def foo5(x: Array[_$2] forSome { 
+      <synthetic> type _$2 >: Nothing <: Any
+    }) = println(x.length);
+    abstract class Animal extends AnyRef {
+      def <init>() = {
+        super.<init>();
+        ()
+      };
+      def printAnimal(): Unit = println("Animal")
+    };
+    class Dog extends Animal {
+      def <init>() = {
+        super.<init>();
+        ()
+      };
+      def printDog(): Unit = println("Dog")
+    };
+    def main(args: Array[String]): scala.Unit = {
+      val d1: Dog = new Dog();
+      val d2: Animal = new Dog();
+      val d3: AnyRef = new Dog();
+      val d4: Any = new Dog();
+      val range0: List[_$3] forSome { 
+        <synthetic> type _$3 >: Nothing <: Any
+      } = List(d1);
+      val range1: List[_$4] forSome { 
+        <synthetic> type _$4 >: Animal <: Any
+      } = List(d1);
+      val range2: List[_$5] forSome { 
+        <synthetic> type _$5 >: Dog <: Animal
+      } = List(d1);
+      val range3: List[_$6] forSome { 
+        <synthetic> type _$6 >: Nothing <: Dog
+      } = List(d1);
+      val range4: List[_$7] forSome { 
+        <synthetic> type _$7 >: Dog <: Dog
+      } = List(d1);
+      val getFunction0: _root_.scala.Function1[Int, Any] = (range0.apply: (() => <empty>));
+      val getFunction1: _root_.scala.Function1[Int, Any] = (range1.apply: (() => <empty>));
+      val getFunction2: _root_.scala.Function1[Int, Animal] = (range2.apply: (() => <empty>));
+      val getFunction3: _root_.scala.Function1[Int, Dog] = (range3.apply: (() => <empty>));
+      val getFunction4: _root_.scala.Function1[Int, Dog] = (range4.apply: (() => <empty>));
+      val appendFunction0: _root_.scala.Function1[Nothing, List[Any]] = (range0.$colon$colon: (() => <empty>));
+      val appendFunction1: _root_.scala.Function1[Animal, List[Any]] = (range1.$colon$colon: (() => <empty>));
+      val appendFunction2: _root_.scala.Function1[Dog, List[Animal]] = (range2.$colon$colon: (() => <empty>));
+      val appendFunction3: _root_.scala.Function1[Nothing, List[Dog]] = (range3.$colon$colon: (() => <empty>));
+      val appendFunction4: _root_.scala.Function1[Dog, List[Dog]] = (range4.$colon$colon: (() => <empty>));
+      val val2 = range2(0).printAnimal();
+      val val3 = range3(0).printAnimal();
+      val val4 = range4(0).printAnimal();
+      val result4: Dog = range3(0);
+      val result5: Dog = range4(0);
+      def eatDog(d: Dog): Unit = println("This dog has been eaten");
+      eatDog(range3(0));
+      eatDog(range4(0))
+    }
+  }
+}
+
+[info] Running pkg.Main 
+Animal
+Animal
+Animal
+This dog has been eaten
+This dog has been eaten
+[success] Total time: 4 s, completed Jun 1, 2016 1:22:52 AM
+Disconnected from the target VM, address: '127.0.0.1:39745', transport: 'socket'
+
+Process finished with exit code 0

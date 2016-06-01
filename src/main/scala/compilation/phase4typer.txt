@@ -1,0 +1,88 @@
+[[syntax trees at end of                     typer]] // Main.scala
+package pkg {
+  object Main extends scala.AnyRef {
+    def <init>(): pkg.Main.type = {
+      Main.super.<init>();
+      ()
+    };
+    def foo1[T](x: Array[T]): Unit = scala.this.Predef.println(x.length);
+    def foo2(x: Array[_]): Unit = scala.this.Predef.println(x.length);
+    def foo3(x: Array[_]): Unit = scala.this.Predef.println(x.length);
+    def foo4(x: Array[_]): Unit = scala.this.Predef.println(x.length);
+    def foo5(x: Array[_]): Unit = scala.this.Predef.println(x.length);
+    abstract class Animal extends scala.AnyRef {
+      def <init>(): pkg.Main.Animal = {
+        Animal.super.<init>();
+        ()
+      };
+      def printAnimal(): Unit = scala.this.Predef.println("Animal")
+    };
+    class Dog extends Main.this.Animal {
+      def <init>(): pkg.Main.Dog = {
+        Dog.super.<init>();
+        ()
+      };
+      def printDog(): Unit = scala.this.Predef.println("Dog")
+    };
+    def main(args: Array[String]): Unit = {
+      val d1: pkg.Main.Dog = new Main.this.Dog();
+      val d2: pkg.Main.Animal = new Main.this.Dog();
+      val d3: AnyRef = new Main.this.Dog();
+      val d4: Any = new Main.this.Dog();
+      val range0: List[_] = immutable.this.List.apply[pkg.Main.Dog](d1);
+      val range1: List[_ >: pkg.Main.Animal] = immutable.this.List.apply[pkg.Main.Dog](d1);
+      val range2: List[_ >: pkg.Main.Dog <: pkg.Main.Animal] = immutable.this.List.apply[pkg.Main.Dog](d1);
+      val range3: List[_ <: pkg.Main.Dog] = immutable.this.List.apply[pkg.Main.Dog](d1);
+      val range4: List[_ >: pkg.Main.Dog <: pkg.Main.Dog] = immutable.this.List.apply[pkg.Main.Dog](d1);
+      val getFunction0: Int => Any = {
+        ((n: Int) => range0.apply(n))
+      };
+      val getFunction1: Int => Any = {
+        ((n: Int) => range1.apply(n))
+      };
+      val getFunction2: Int => pkg.Main.Animal = {
+        ((n: Int) => range2.apply(n))
+      };
+      val getFunction3: Int => pkg.Main.Dog = {
+        ((n: Int) => range3.apply(n))
+      };
+      val getFunction4: Int => pkg.Main.Dog = {
+        ((n: Int) => range4.apply(n))
+      };
+      val appendFunction0: Nothing => List[Any] = {
+        ((x: _$3) => range0.::[_$3](x))
+      };
+      val appendFunction1: pkg.Main.Animal => List[Any] = {
+        ((x: _$4) => range1.::[_$4](x))
+      };
+      val appendFunction2: pkg.Main.Dog => List[pkg.Main.Animal] = {
+        ((x: _$5) => range2.::[_$5](x))
+      };
+      val appendFunction3: Nothing => List[pkg.Main.Dog] = {
+        ((x: _$6) => range3.::[_$6](x))
+      };
+      val appendFunction4: pkg.Main.Dog => List[pkg.Main.Dog] = {
+        ((x: _$7) => range4.::[_$7](x))
+      };
+      val val2: Unit = range2.apply(0).printAnimal();
+      val val3: Unit = range3.apply(0).printAnimal();
+      val val4: Unit = range4.apply(0).printAnimal();
+      val result4: pkg.Main.Dog = range3.apply(0);
+      val result5: pkg.Main.Dog = range4.apply(0);
+      def eatDog(d: pkg.Main.Dog): Unit = scala.this.Predef.println("This dog has been eaten");
+      eatDog(range3.apply(0));
+      eatDog(range4.apply(0))
+    }
+  }
+}
+
+[info] Running pkg.Main 
+Animal
+Animal
+Animal
+This dog has been eaten
+This dog has been eaten
+Disconnected from the target VM, address: '127.0.0.1:37920', transport: 'socket'
+[success] Total time: 3 s, completed Jun 1, 2016 1:23:39 AM
+
+Process finished with exit code 0

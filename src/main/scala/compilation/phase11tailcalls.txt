@@ -1,0 +1,178 @@
+[[syntax trees at end of                 tailcalls]] // Main.scala
+package pkg {
+  object Main extends Object {
+    def <init>(): pkg.Main.type = {
+      Main.super.<init>();
+      ()
+    };
+    def foo1[T](x: Array[T]): Unit = scala.this.Predef.println(x.length());
+    def foo2(x: Array[_]): Unit = scala.this.Predef.println(x.length());
+    def foo3(x: Array[_]): Unit = scala.this.Predef.println(x.length());
+    def foo4(x: Array[_]): Unit = scala.this.Predef.println(x.length());
+    def foo5(x: Array[_]): Unit = scala.this.Predef.println(x.length());
+    abstract class Animal extends Object {
+      def <init>(): pkg.Main.Animal = {
+        Animal.super.<init>();
+        ()
+      };
+      def printAnimal(): Unit = scala.this.Predef.println("Animal")
+    };
+    class Dog extends pkg.Main.Animal {
+      def <init>(): pkg.Main.Dog = {
+        Dog.super.<init>();
+        ()
+      };
+      def printDog(): Unit = scala.this.Predef.println("Dog")
+    };
+    def main(args: Array[String]): Unit = {
+      val d1: pkg.Main.Dog = new pkg.Main.Dog();
+      val d2: pkg.Main.Animal = new pkg.Main.Dog();
+      val d3: Object = new pkg.Main.Dog();
+      val d4: Any = new pkg.Main.Dog();
+      val range0: List[_] = immutable.this.List.apply[pkg.Main.Dog](scala.this.Predef.wrapRefArray[pkg.Main.Dog](Array[pkg.Main.Dog]{d1}));
+      val range1: List[_ >: pkg.Main.Animal] = immutable.this.List.apply[pkg.Main.Dog](scala.this.Predef.wrapRefArray[pkg.Main.Dog](Array[pkg.Main.Dog]{d1}));
+      val range2: List[_ >: pkg.Main.Dog <: pkg.Main.Animal] = immutable.this.List.apply[pkg.Main.Dog](scala.this.Predef.wrapRefArray[pkg.Main.Dog](Array[pkg.Main.Dog]{d1}));
+      val range3: List[_ <: pkg.Main.Dog] = immutable.this.List.apply[pkg.Main.Dog](scala.this.Predef.wrapRefArray[pkg.Main.Dog](Array[pkg.Main.Dog]{d1}));
+      val range4: List[_ >: pkg.Main.Dog <: pkg.Main.Dog] = immutable.this.List.apply[pkg.Main.Dog](scala.this.Predef.wrapRefArray[pkg.Main.Dog](Array[pkg.Main.Dog]{d1}));
+      val getFunction0: Int => Any = {
+        {
+          @SerialVersionUID(value = 0) final <synthetic> class $anonfun extends scala.runtime.AbstractFunction1[Int,Any] with Serializable {
+            def <init>(): <$anon: Int => Any> = {
+              $anonfun.super.<init>();
+              ()
+            };
+            final def apply(n: Int): Any = range0.apply(n)
+          };
+          (new <$anon: Int => Any>(): Int => Any)
+        }
+      };
+      val getFunction1: Int => Any = {
+        {
+          @SerialVersionUID(value = 0) final <synthetic> class $anonfun extends scala.runtime.AbstractFunction1[Int,Any] with Serializable {
+            def <init>(): <$anon: Int => Any> = {
+              $anonfun.super.<init>();
+              ()
+            };
+            final def apply(n: Int): Any = range1.apply(n)
+          };
+          (new <$anon: Int => Any>(): Int => Any)
+        }
+      };
+      val getFunction2: Int => pkg.Main.Animal = {
+        {
+          @SerialVersionUID(value = 0) final <synthetic> class $anonfun extends scala.runtime.AbstractFunction1[Int,pkg.Main.Animal] with Serializable {
+            def <init>(): <$anon: Int => pkg.Main.Animal> = {
+              $anonfun.super.<init>();
+              ()
+            };
+            final def apply(n: Int): pkg.Main.Animal = range2.apply(n)
+          };
+          (new <$anon: Int => pkg.Main.Animal>(): Int => pkg.Main.Animal)
+        }
+      };
+      val getFunction3: Int => pkg.Main.Dog = {
+        {
+          @SerialVersionUID(value = 0) final <synthetic> class $anonfun extends scala.runtime.AbstractFunction1[Int,pkg.Main.Dog] with Serializable {
+            def <init>(): <$anon: Int => pkg.Main.Dog> = {
+              $anonfun.super.<init>();
+              ()
+            };
+            final def apply(n: Int): pkg.Main.Dog = range3.apply(n)
+          };
+          (new <$anon: Int => pkg.Main.Dog>(): Int => pkg.Main.Dog)
+        }
+      };
+      val getFunction4: Int => pkg.Main.Dog = {
+        {
+          @SerialVersionUID(value = 0) final <synthetic> class $anonfun extends scala.runtime.AbstractFunction1[Int,pkg.Main.Dog] with Serializable {
+            def <init>(): <$anon: Int => pkg.Main.Dog> = {
+              $anonfun.super.<init>();
+              ()
+            };
+            final def apply(n: Int): pkg.Main.Dog = range4.apply(n)
+          };
+          (new <$anon: Int => pkg.Main.Dog>(): Int => pkg.Main.Dog)
+        }
+      };
+      val appendFunction0: Nothing => List[Any] = {
+        {
+          @SerialVersionUID(value = 0) final <synthetic> class $anonfun extends scala.runtime.AbstractFunction1[_$3,List[_$3]] with Serializable {
+            def <init>(): <$anon: _$3 => List[_$3]> = {
+              $anonfun.super.<init>();
+              ()
+            };
+            final def apply(x: _$3): List[_$3] = range0.::[_$3](x)
+          };
+          (new <$anon: _$3 => List[_$3]>(): _$3 => List[_$3])
+        }
+      };
+      val appendFunction1: pkg.Main.Animal => List[Any] = {
+        {
+          @SerialVersionUID(value = 0) final <synthetic> class $anonfun extends scala.runtime.AbstractFunction1[_$4,List[_$4]] with Serializable {
+            def <init>(): <$anon: _$4 => List[_$4]> = {
+              $anonfun.super.<init>();
+              ()
+            };
+            final def apply(x: _$4): List[_$4] = range1.::[_$4](x)
+          };
+          (new <$anon: _$4 => List[_$4]>(): _$4 => List[_$4])
+        }
+      };
+      val appendFunction2: pkg.Main.Dog => List[pkg.Main.Animal] = {
+        {
+          @SerialVersionUID(value = 0) final <synthetic> class $anonfun extends scala.runtime.AbstractFunction1[_$5,List[_$5]] with Serializable {
+            def <init>(): <$anon: _$5 => List[_$5]> = {
+              $anonfun.super.<init>();
+              ()
+            };
+            final def apply(x: _$5): List[_$5] = range2.::[_$5](x)
+          };
+          (new <$anon: _$5 => List[_$5]>(): _$5 => List[_$5])
+        }
+      };
+      val appendFunction3: Nothing => List[pkg.Main.Dog] = {
+        {
+          @SerialVersionUID(value = 0) final <synthetic> class $anonfun extends scala.runtime.AbstractFunction1[_$6,List[_$6]] with Serializable {
+            def <init>(): <$anon: _$6 => List[_$6]> = {
+              $anonfun.super.<init>();
+              ()
+            };
+            final def apply(x: _$6): List[_$6] = range3.::[_$6](x)
+          };
+          (new <$anon: _$6 => List[_$6]>(): _$6 => List[_$6])
+        }
+      };
+      val appendFunction4: pkg.Main.Dog => List[pkg.Main.Dog] = {
+        {
+          @SerialVersionUID(value = 0) final <synthetic> class $anonfun extends scala.runtime.AbstractFunction1[_$7,List[_$7]] with Serializable {
+            def <init>(): <$anon: _$7 => List[_$7]> = {
+              $anonfun.super.<init>();
+              ()
+            };
+            final def apply(x: _$7): List[_$7] = range4.::[_$7](x)
+          };
+          (new <$anon: _$7 => List[_$7]>(): _$7 => List[_$7])
+        }
+      };
+      val val2: Unit = range2.apply(0).printAnimal();
+      val val3: Unit = range3.apply(0).printAnimal();
+      val val4: Unit = range4.apply(0).printAnimal();
+      val result4: pkg.Main.Dog = range3.apply(0);
+      val result5: pkg.Main.Dog = range4.apply(0);
+      def eatDog(d: pkg.Main.Dog): Unit = scala.this.Predef.println("This dog has been eaten");
+      eatDog(range3.apply(0));
+      eatDog(range4.apply(0))
+    }
+  }
+}
+
+[info] Running pkg.Main 
+Animal
+Animal
+Animal
+This dog has been eaten
+This dog has been eaten
+[success] Total time: 3 s, completed Jun 1, 2016 1:24:23 AM
+Disconnected from the target VM, address: '127.0.0.1:41316', transport: 'socket'
+
+Process finished with exit code 0
